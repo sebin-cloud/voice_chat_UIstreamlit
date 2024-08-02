@@ -38,6 +38,14 @@ def STT(speech):
     os.remove(filename) 
     return transcription.text
 
+def ask_gpt(prompt,model):
+    response = client.chat.completions.create(
+        model = model,
+        messages = prompt
+    )
+    return response.choices[0].message.content
+
+
 ##### 메인 함수 #####
 def main():
     # 기본 설정
